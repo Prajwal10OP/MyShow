@@ -43,6 +43,7 @@ public class MyShowController {
 	@DeleteMapping("/cancelBooking/{bookingId}")
 	public String cancelBooking(@PathVariable int bookingId) {
 		repository.deleteById(bookingId);
+		
 		return "Booking cancelled with bookingId : " + bookingId;
 	}
 
@@ -52,6 +53,8 @@ public class MyShowController {
 		dbResponse.setBookingTime(updateBookRequest.getBookingTime());
 		dbResponse.setPrice(updateBookRequest.getPrice());
 		dbResponse.setShowName(updateBookRequest.getShowName());
+		
+		
 		dbResponse.setUserCount(updateBookRequest.getUserCount());
 		repository.saveAndFlush(dbResponse);
 		return dbResponse;
